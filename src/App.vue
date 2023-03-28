@@ -1,7 +1,21 @@
 <script>
+import AppCards from './components/AppCards.vue';
 
+export default {
+  data() {
+    return {
+
+    }
+  },
+
+  components: {
+    AppCards
+  }
+}
 </script>
 
-<template></template>
+<template>
+  <AppCards></AppCards>
+</template>
 
 <style lang="scss" scoped></style>
