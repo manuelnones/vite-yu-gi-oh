@@ -1,18 +1,11 @@
 <script>
-import axios from "axios";
+import { store } from '../store';
 export default {
     name: "AppCards",
     data() {
         return {
-            arrayCards: [],
+            store,
         }
-    },
-
-    created() {
-        axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?num=50&offset=0`).then((res) => {
-            this.arrayCards = res.data.data;
-            console.log(this.arrayCards);
-        })
     },
 }
 </script>
@@ -20,10 +13,10 @@ export default {
 
 <template>
     <main>
-        <div v-for="card in arrayCards" class="card">
+        <div v-for="card in store.arrayCards" class="card">
             <img :src="card.card_images[0].image_url" alt="">
-            <div><strong>{{ card.name }}</strong></div>
-            <div>{{ card.type }}</div>
+            <div><strong> NAME: </strong> {{ card.name }}</div>
+            <div> <strong>TYPE CARD:</strong> {{ card.type }}</div>
         </div>
     </main>
 </template>
@@ -42,6 +35,10 @@ main {
         img {
             width: 100%;
             object-fit: cover;
+        }
+
+        div {
+            margin-bottom: 10px;
         }
     }
 }
