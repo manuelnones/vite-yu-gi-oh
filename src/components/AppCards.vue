@@ -13,10 +13,10 @@ export default {
 
 <template>
     <main>
-        <div v-for="card in store.arrayCards" class="card">
+        <div v-for="card in this.store.arrayCards" class="card">
             <img :src="card.card_images[0].image_url" alt="">
             <div><strong> NAME: </strong> {{ card.name }}</div>
-            <div> <strong>TYPE CARD:</strong> {{ card.type }}</div>
+            <div> <strong> TYPE CARD:</strong> {{ card.type }}</div>
         </div>
     </main>
 </template>

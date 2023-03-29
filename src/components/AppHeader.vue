@@ -20,6 +20,8 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+$color: #242424;
+
 header {
     display: flex;
     align-items: center;
@@ -41,6 +43,6 @@ header {
 }
 
 hr {
-    border: 2px solid #1C1C1C;
+    border: 2px solid $color;
 }
 </style>

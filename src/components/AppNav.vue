@@ -4,7 +4,13 @@ export default {
 
     data() {
         return {
+            userText: ``,
+        }
+    },
 
+    methods: {
+        searchCard() {
+            console.log(`cliccato`)
         }
     }
 }
@@ -14,8 +20,8 @@ export default {
 <template>
     <nav>
         <div id="search">
-            <input type="text" placeholder="Inserisci nome carta">
-            <button>cerca</button>
+            <input v-model="userText" type="text" placeholder="Inserisci nome carta">
+            <button @click="searchCard()">Cerca</button>
         </div>
     </nav>
     <hr>
@@ -23,6 +29,8 @@ export default {
 
 
 <style lang="scss" scoped>
+$color: #242424;
+
 nav {
     display: flex;
     justify-content: center;
@@ -30,13 +38,12 @@ nav {
     height: 80px;
 
     #search {
-        $search-color: #242424;
 
         input {
             padding: 10px;
             padding-left: 60px;
             padding-right: 40px;
-            background-color: $search-color;
+            background-color: $color;
             border: none;
         }
 
@@ -45,7 +52,7 @@ nav {
             padding-left: 20px;
             padding-right: 20px;
             margin-left: 20px;
-            background-color: $search-color;
+            background-color: $color;
             border: none;
             color: gray;
             cursor: pointer;
@@ -55,6 +62,6 @@ nav {
 }
 
 hr {
-    border: 2px solid #1C1C1C;
+    border: 2px solid $color;
 }
 </style>
