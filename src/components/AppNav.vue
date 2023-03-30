@@ -1,18 +1,15 @@
 <script>
+import { store } from '../store';
 export default {
     name: `AppNav`,
 
     data() {
         return {
-            userText: ``,
+            store,
         }
     },
 
-    methods: {
-        searchCard() {
-            console.log(`cliccato`)
-        }
-    }
+    emits: [`userSearch`],
 }
 </script>
 
@@ -20,8 +17,10 @@ export default {
 <template>
     <nav>
         <div id="search">
-            <input v-model="userText" type="text" placeholder="Inserisci nome carta">
-            <button @click="searchCard()">Cerca</button>
+            <input v-model="store.userSearch" type="text" placeholder="Inserisci nome carta"
+                @keyup.enter="$emit(`userSearch`)">
+            <button @click="$emit(`userSearch`)">Cerca</button>
+            <div id="quantity-cards">carte trovate: {{ store.arrayCards.length }}</div>
         </div>
     </nav>
     <hr>
@@ -35,7 +34,7 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80px;
+    height: 160px;
 
     #search {
 
@@ -56,6 +55,14 @@ nav {
             border: none;
             color: gray;
             cursor: pointer;
+        }
+
+        #quantity-cards {
+            text-align: center;
+            padding-top: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            color: $color;
         }
     }
 

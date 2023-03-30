@@ -13,9 +13,26 @@ export default {
   },
 
   created() {
-    axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?num=50&offset=0`).then((res) => {
+    axios.get(this.store.standardAPI).then((res) => {
       this.store.arrayCards = res.data.data;
     })
+  },
+
+  methods: {
+    searchCards() {
+      if (this.store.userSearch != "") {
+        let newAPI = `&fname=` + this.store.userSearch;
+
+        axios.get(this.store.standardAPI + newAPI).then((res) => {
+          this.store.arrayCards = res.data.data
+        })
+      } else {
+        axios.get(this.store.standardAPI).then((res) => {
+          this.store.arrayCards = res.data.data
+        });
+      }
+
+    }
   },
 
   components: {
@@ -28,7 +45,7 @@ export default {
 
 <template>
   <AppHeader></AppHeader>
-  <AppNav></AppNav>
+  <AppNav @userSearch="searchCards()"></AppNav>
   <AppMain></AppMain>
 </template>
 
