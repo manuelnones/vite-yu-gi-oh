@@ -27,8 +27,6 @@ export default {
           this.store.arrayCards = res.data.data
         })
 
-        this.store.numberCards = `carte trovate: ` + store.arrayCards.length;
-
       } else {
         axios.get(this.store.standardAPI).then((res) => {
           this.store.arrayCards = res.data.data
