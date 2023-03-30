@@ -20,7 +20,7 @@ export default {
             <input v-model="store.userSearch" type="text" placeholder="Inserisci nome carta"
                 @keyup.enter="$emit(`userSearch`)">
             <button @click="$emit(`userSearch`)">Cerca</button>
-            <div id="quantity-cards">{{ store.numberCards }}</div>
+            <div id="quantity-cards">{{ store.arrayCards.length }}</div>
         </div>
     </nav>
     <hr>
