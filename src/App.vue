@@ -26,11 +26,15 @@ export default {
         axios.get(this.store.standardAPI + newAPI).then((res) => {
           this.store.arrayCards = res.data.data
         })
+
+        this.store.numberCards = `carte trovate: ` + store.arrayCards.length;
+
       } else {
         axios.get(this.store.standardAPI).then((res) => {
           this.store.arrayCards = res.data.data
         });
       }
+
 
     }
   },
